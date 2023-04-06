@@ -4,7 +4,7 @@ import React,{useState} from 'react'
 //RULE 
 
 export default function TextForm() {
-    const [text,setText]=useState("Enter Your text here");
+    const [text,setText]=useState("");
     const hendleOnChange=(event)=>{
         let NewText =event.target.value
         setText(NewText);
@@ -20,6 +20,9 @@ export default function TextForm() {
       let newText=text.toLowerCase()
       setText(newText);
   }
+  const handlecleartext=(event)=>{
+    setText("");
+}
   
 
   return (
@@ -35,6 +38,15 @@ export default function TextForm() {
     </div>
         <button onClick={handleOnClick} className='btn btn-primary' >Change to UpperCase</button>
         <button onClick={handleClick} className='btn btn-primary m-3'>Change to LowerCase</button>
+        <button onClick={handlecleartext} className='btn btn-outline-danger m-3'>Chear text</button>
+        <hr/>
+        <div className='p-3'>
+           <h2>Your text summary</h2>
+        </div>
+        <p> Your text contains :{text.split(" ").length-1} words and {text.length}:characters</p>
+        <hr/>
+        <h1> priview Text</h1>
+        <p>{text}</p>
     </div>
   )
 }
